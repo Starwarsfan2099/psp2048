@@ -12,12 +12,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <pspdebug.h>
+#include <pspdisplay.h>
+#include <pspctrl.h>
 #include "graphics.h"
 #include "callbacks.h"
 #include "input.h"
+#include "save.h"
+#include <string.h>
 
 #define VERS 1
 #define REVS 0
+#define printf pspDebugScreenPrintf
 
 PSP_MODULE_INFO("2048", PSP_MODULE_USER, VERS, REVS);
 PSP_MAIN_THREAD_ATTR(PSP_THREAD_ATTR_USER); 
@@ -208,6 +214,7 @@ void addScore (int a) {
 	iScore += a;
 	if (iHighScore < iScore)
 		iHighScore = iScore;
+		saveScore(iHighScore);
 }
 /*!
  * @biref play a animation of move square
@@ -395,7 +402,6 @@ void moveRight () {
 int main() {
 	int refresh  = 1;
 	setupCallbacks();
-
 	sceCtrlSetSamplingCycle(0);
 	sceCtrlSetSamplingMode(PSP_CTRL_MODE_ANALOG);
 	initGraphics();
@@ -404,7 +410,7 @@ int main() {
 	srand(time(NULL));
 	
 	iScore = 0;
-	iHighScore = 0;
+	iHighScore = loadScore();
 	
 	newPoint();
 	
