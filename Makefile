@@ -1,5 +1,5 @@
 TARGET = 2048-PSP
-OBJS = src/psp2048.o src/callbacks.o src/graphics.o src/framebuffer.o src/input.o
+OBJS = src/psp2048.o src/save.o src/callbacks.o src/graphics.o src/framebuffer.o src/input.o
 
 
 INCDIR =
@@ -10,7 +10,7 @@ ASFLAGS = $(CFLAGS)
 
 LIBDIR =
 LDFLAGS = 
-LIBS = -lintraFont -lpspgum -lpspgu -lpng -lz -lm -lpsprtc
+LIBS = -lintrafont -lpspgum -lpspgu -lpng -lz -lm -lpsprtc
 
 EXTRA_TARGETS = EBOOT.PBP
 PSP_EBOOT_TITLE = 2048-PSP
