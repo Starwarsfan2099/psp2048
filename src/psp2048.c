@@ -214,7 +214,6 @@ void addScore (int a) {
 	iScore += a;
 	if (iHighScore < iScore)
 		iHighScore = iScore;
-		saveScore(iHighScore);
 }
 /*!
  * @biref play a animation of move square
@@ -441,9 +440,13 @@ int main() {
 			refresh = 1;
 		}
 		if (keyTrigger(PSP_CTRL_START)) {
+			if (iHighScore == iScore)
+				saveScore(iHighScore);
 			break;
 		}
 		if (keyTrigger(PSP_CTRL_SELECT)) {
+			if (iHighScore == iScore)
+				saveScore(iHighScore);
 			iScore = 0;
 			memset(table,0,sizeof(table));
 			newPoint();
