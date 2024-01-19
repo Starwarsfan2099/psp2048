@@ -1,4 +1,7 @@
-//based off VitaShell code by  TheFloW
+// Based off VitaShell code by  TheFloW
+// Revised by dots-tb for the Vita
+// Revised again by Starwarsfan2099 for the PSP and to fix a saving bug
+
 #include "save.h"
 #include <stdio.h>
 #include <string.h>
@@ -31,7 +34,6 @@ void saveScore(int score) {
 	int ret = WriteFile("ms0:/2048_highscore.txt", buf, size); 
 
 	if(ret<0) {
-		//sceIoMkdir("ux0:/data/psp2048/", 0777);
 		int ret = WriteFile("ms0:/2048_highscore.txt", buf, size); 
 	}
 	
